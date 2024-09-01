@@ -1,14 +1,15 @@
 // util function that computes the fibonacci numbers
-function fibonacci(n: number): number {
-  if (n < 0) {
-    return -1;
-  } else if (n === 0) {
-    return 0;
-  } else if (n === 1) {
-    return 1;
+const fibonacci = require("./fib");
+
+export default (req, res) => {
+  const { num } = req.params;
+
+  const fibN = fibonacci(parseInt(num));
+  let result = `fibonacci(${num}) is ${fibN}`;
+
+  if (fibN < 0) {
+    result = `fibonacci(${num}) is undefined`;
   }
 
-  return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-export default fibonacci;
+  res.send(result);
+};
