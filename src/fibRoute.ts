@@ -5,7 +5,11 @@ import fibonacci from "./fib";
 import { Request, Response } from "express";
 
 export default (req: Request, res: Response) => {
-  const { num } = parseInt(req.params);
+  const num: number = parseInt(req.params.num);
+
+if (isNaN(num)) {
+  return res.status(400).send("Invalid number parameter");
+}
 
   const fibN = fibonacci(parseInt(num));
   let result = `fibonacci(${num}) is ${fibN}`;
