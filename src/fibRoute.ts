@@ -11,7 +11,7 @@ if (isNaN(num)) {
   return res.status(400).send("Invalid number parameter");
 }
 
-  const fibN = fibonacci(parseInt(num));
+  const fibN: number = fibonacci(num);
   let result = `fibonacci(${num}) is ${fibN}`;
 
   if (fibN < 0) {
